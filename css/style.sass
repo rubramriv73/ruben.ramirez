@@ -21,7 +21,9 @@ $primary-text-color: rgb(255, 145, 77)
 	.btn_menu
 		display: none
 	header
+		background-color: $primary-color
 		display: flex
+		align-items: center
 
 		nav
 			transition: all .5s ease
@@ -38,16 +40,42 @@ $primary-text-color: rgb(255, 145, 77)
 
 @mixin media()
 	@media  screen and (min-width:1024px) and (max-width:1120px)
+
 		@include responsiveNav()
 
 		#presentation
 			img
 				width: 55%
 
-	@media  screen and (min-width:800px) and (max-width:1024px)
+		#work
+			.projects-slider
+				width: 700px
+				height: 700px
+
+				.card 
+					justify-content: space-around
+					a
+						width: 50%
+						text-align: center
+
+	@media  screen and (min-width:768px) and (max-width:1024px)
+
+		@include responsiveNav()
+
 		#presentation
 			img
 				width: 70
+
+		#work
+			.projects-slider
+				width: 700px
+				height: 700px
+
+				.card 
+					justify-content: space-around
+					a
+						width: 50%
+						text-align: center
 
 	@media  screen and (min-width:1120px)
 
@@ -56,6 +84,13 @@ $primary-text-color: rgb(255, 145, 77)
 		#presentation
 			img
 				width: 40%
+
+	@media  screen and (min-width: 425px) and (max-width: 768px)
+
+		#work
+			.projects-slider
+				width: 400px
+				height: 500px
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;1,500;1,700&display=swap')
 
@@ -66,6 +101,7 @@ $primary-text-color: rgb(255, 145, 77)
 	padding: 0
 	box-sizing: border-box
 	color: $primary-text-color
+	scroll-behavior: smooth
 
 a
 	text-decoration: none
@@ -79,7 +115,12 @@ h3
 	font-size: 30px
 
 body
+	width: 100%
 	background-color: $primary-color
+
+section
+	height: 100vh
+	
 
 header
 	width: 100%
@@ -136,26 +177,23 @@ header
 .btn_span
 	font-size: 16px
 	position: absolute
-	top: 0
+	top: 5px
 	width: 2em
 	height: 5px
 	background: $primary-text-color
 	transition: all .3s ease
 
 	&:nth-child(2)
-		top: 10px
+		top: 15px
 
 	&:nth-child(3)
-		top: 20px
+		top: 25px
 
 .section-header
 	font-size: 40px
 	text-align: center
 	font-weight: 800
 	font-style: italic
-
-section
-	height: 100vh
 
 #presentation
 	display: flex
@@ -194,7 +232,16 @@ section
 	justify-content: space-evenly
 	padding: 2em
 
+	& li a img:hover
+		transform: scale(1.3)
+
 #skills
+	height: 90vh
+	display: flex
+	flex-direction: column
+	justify-content: center
+	h2
+		*margin-top: 2em
 	h3
 		text-align: center
 
@@ -202,27 +249,80 @@ section
 			font-size: 30px
 
 	.hard-skills
-		display: flex
+		margin-top: 4em
+		display: none
 		flex:
 			direction: column
 			wrap: wrap
 		align-items: center
-		height: 50%
+		height: 40%
 		img
-			height: 115px
-
-		.phpIcon
 			height: 90px
 
+		.phpIcon
+			margin-top: 1em
+			height: 70px
+
 	.soft-skills
+		height: 50%
+		margin-top: 3em
+		padding: 2em
 		text-align: center
-		display: 
+		display: none
+		flex-direction: column
+		justify-content: space-around
+
+		li
+			font-size: 27px
+
+
+#work
+	height: 80vh
+	width: 100%
+	display: flex
+	flex:
+		direction: column
+	align-items: center
+	justify-content: space-evenly
+	gap: 2em
+	.projects-slider
+		*background-color: #fff
+		overflow: scroll
+		width: 300px
+		height: 400px
+
+		.card
+			height: 100%
+			display: flex
+			flex-direction: column
+			justify-content: space-between
+			align-items: center
+			text-align: center
+			.card-title
+				font-weight: 500
+				font-style: italic
+			img
+				width: 100%
+				object-fit: cover
+
+			a
+				background-color: $primary-text-color
+				color: $primary-color
+				font-weight: 500
+				padding: 0.5em
+				border-radius: 30px
+
+
 footer
+	width: 100%
 	text-align: center
 	.social-icons
 		padding: 0
 		img
 			width: 40px
+
+		&:hover
+			transform: scale(1.1)
 	
 	span
 		font-size: 15px
