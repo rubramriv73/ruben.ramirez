@@ -1,0 +1,234 @@
+
+// Rubén Ramírez Rivera
+
+// Hoja estilos SASS de mi porfolio personal
+
+$primary-color: rgb(0, 0, 0)
+
+$primary-text-color: rgb(255, 145, 77)
+
+@mixin menu()
+	position: fixed
+	top: 20px
+	right: 20px
+	z-index: 3
+
+@mixin cross($value)
+	top: 10px
+	transform: rotate($value)
+
+@mixin responsiveNav()
+	.btn_menu
+		display: none
+	header
+		display: flex
+
+		nav
+			transition: all .5s ease
+			left: 0
+			z-index: -1
+
+			ul
+				flex-direction: row
+				justify-content: end
+				height: 100%
+
+				.section-header
+					font-size: 20px
+
+@mixin media()
+	@media  screen and (min-width:1024px) and (max-width:1120px)
+		@include responsiveNav()
+
+		#presentation
+			img
+				width: 55%
+
+	@media  screen and (min-width:800px) and (max-width:1024px)
+		#presentation
+			img
+				width: 70
+
+	@media  screen and (min-width:1120px)
+
+		@include responsiveNav()
+
+		#presentation
+			img
+				width: 40%
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;1,500;1,700&display=swap')
+
+*
+	font-size: 23px
+	font-family: Montserrat
+	margin: 0
+	padding: 0
+	box-sizing: border-box
+	color: $primary-text-color
+
+a
+	text-decoration: none
+	color: $primary-text-color
+
+ul
+	list-style: none
+
+h3
+	font-weight: 500
+	font-size: 30px
+
+body
+	background-color: $primary-color
+
+header
+	width: 100%
+	padding: 1em
+	position: fixed
+	z-index: 999
+	top: 0
+
+	.logo
+		width: 40px
+
+	nav
+		background-color: $primary-color
+		text-align: center
+		width: 100%
+		position: fixed
+		right: -100vw
+		transition: all .5s ease
+
+		ul
+			height: 100vh
+			display: flex
+			flex-direction: column
+			justify-content: space-evenly
+
+		li
+			padding: 1em
+
+		.flag
+			width: 2em
+
+#btn_menu
+	@include menu
+	display: none
+
+	&:checked ~ .btn_menu #btn_span_1
+		@include cross(45deg)
+
+	&:checked ~ .btn_menu #btn_span_2
+		opacity: 0
+
+	&:checked ~ .btn_menu #btn_span_3
+		@include cross(-45deg)
+
+	&:checked ~ nav
+		right: 0
+
+.btn_menu
+	@include menu
+	width: 40px
+	height: 40px
+	cursor: pointer
+
+.btn_span
+	font-size: 16px
+	position: absolute
+	top: 0
+	width: 2em
+	height: 5px
+	background: $primary-text-color
+	transition: all .3s ease
+
+	&:nth-child(2)
+		top: 10px
+
+	&:nth-child(3)
+		top: 20px
+
+.section-header
+	font-size: 40px
+	text-align: center
+	font-weight: 800
+	font-style: italic
+
+section
+	height: 100vh
+
+#presentation
+	display: flex
+	flex-direction: column
+	align-items: center
+	justify-content: space-evenly
+	//height: 100%
+	width: 100% // Cambiar el tamaño de la imagen con los media queries
+
+	img
+		width: 100%
+		object-fit: cover
+
+	a
+		display: flex
+		flex-direction: column
+		align-items: center
+		cursor: pointer
+
+#aboutme
+	display: flex
+	flex-direction: column
+	justify-content: space-evenly
+
+	p
+		padding: 0 2em
+		font-weight: 400
+		text-align: justify
+
+	h3
+		text-align: center
+		padding: 2em
+
+.social-icons
+	display: flex
+	justify-content: space-evenly
+	padding: 2em
+
+#skills
+	h3
+		text-align: center
+
+		span
+			font-size: 30px
+
+	.hard-skills
+		display: flex
+		flex:
+			direction: column
+			wrap: wrap
+		align-items: center
+		height: 50%
+		img
+			height: 115px
+
+		.phpIcon
+			height: 90px
+
+	.soft-skills
+		text-align: center
+		display: 
+footer
+	text-align: center
+	.social-icons
+		padding: 0
+		img
+			width: 40px
+	
+	span
+		font-size: 15px
+
+	div
+		img
+			width: 1em
+
+@include media
